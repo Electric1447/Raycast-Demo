@@ -36,23 +36,23 @@ void drawPlayer() {
 }
 
 int mapX = 8, mapY = 8, mapS = 64;
-int map[] =
+int map[8][8] =
 {
-	1,1,1,1,1,1,1,1,
-	1,0,1,0,0,0,0,1,
-	1,0,1,0,0,0,0,1,
-	1,0,1,0,0,0,0,1,
-	1,0,0,0,0,0,0,1,
-	1,0,0,0,0,1,0,1,
-	1,0,0,0,0,0,0,1,
-	1,1,1,1,1,1,1,1,
+	{ 1,1,1,1,1,1,1,1 },
+	{ 1,0,1,0,0,0,0,1 },
+	{ 1,0,1,0,0,0,0,1 },
+	{ 1,0,1,0,0,0,0,1 },
+	{ 1,0,0,0,0,0,0,1 },
+	{ 1,0,0,0,0,1,0,1 },
+	{ 1,0,0,0,0,0,0,1 },
+	{ 1,1,1,1,1,1,1,1 }
 };
 
 void drawMap2D() {
 	int x, y, xo, yo;
 	for (y = 0; y < mapY; y++) {
 		for (x = 0; x < mapX; x++) {
-			if (map[y * mapX + x] == 1)
+			if (map[y][x] == 1)
 				glColor3f(1, 1, 1);
 			else
 				glColor3f(0, 0, 0);
@@ -126,7 +126,7 @@ void drawRays3D() {
 			mp = my * mapX + mx;
 			
 			// Hit wall
-			if (mp > 0 && mp < mapX * mapY && map[mp] == 1) {
+			if (mp > 0 && mp < mapX * mapY && map[my][mx] == 1) {
 				hx = rx;
 				hy = ry;
 				disH = dist(px, py, hx, hy, ra);
@@ -178,7 +178,7 @@ void drawRays3D() {
 			mp = my * mapX + mx;
 			
 			// Hit wall
-			if (mp > 0 && mp < mapX * mapY && map[mp] == 1) {
+			if (mp > 0 && mp < mapX * mapY && map[my][mx] == 1) {
 				vx = rx;
 				vy = ry;
 				disV = dist(px, py, vx, vy, ra);
